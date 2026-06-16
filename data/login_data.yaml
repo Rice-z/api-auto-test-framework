@@ -1,0 +1,41 @@
+# ============================================
+# 登录接口测试数据
+# 存放路径: data/login_data.yaml
+# ============================================
+# 每条用例包含：
+#   name:     用例名称（会出现在测试报告中）
+#   data:     请求体（username / password）
+#   expected: 预期结果（code为HTTP状态码, msg为预期响应消息）
+
+test_cases:
+  - name: "登录成功-正确账号密码"
+    data:
+      username: "admin"
+      password: "123456"
+    expected:
+      code: 200
+      msg: "登录成功"
+
+  - name: "登录失败-密码错误"
+    data:
+      username: "admin"
+      password: "wrong_password"
+    expected:
+      code: 401
+      msg: "用户名或密码错误"
+
+  - name: "登录失败-用户名为空"
+    data:
+      username: ""
+      password: "123456"
+    expected:
+      code: 400
+      msg: "用户名不能为空"
+
+  - name: "登录失败-密码为空"
+    data:
+      username: "admin"
+      password: ""
+    expected:
+      code: 400
+      msg: "密码不能为空"

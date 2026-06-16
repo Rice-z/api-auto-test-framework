@@ -1,0 +1,20 @@
+# ============================================
+# 用户接口测试数据
+# 存放路径: data/user_data.yaml
+# ============================================
+# 这些用例演示：登录之后如何测试需要认证的接口
+
+test_cases:
+  - name: "获取用户列表-验证Token已携带"
+    path: "/api/v1/users"
+    method: "GET"
+    expected:
+      code: 200
+      check: "has_users"    # 验证返回了用户列表
+
+  - name: "获取用户信息-验证Token"
+    path: "/api/v1/user/profile"
+    method: "GET"
+    expected:
+      code: 200
+      check: "has_profile"  # 验证返回了用户信息

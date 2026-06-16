@@ -1,0 +1,21 @@
+# ============================================
+# 接口自动化测试框架 - 全局配置文件
+# 存放路径: config/settings.yaml
+# ============================================
+
+# 被测系统的基础URL（指向本地 Mock 服务器）
+base_url: "http://localhost:8899"
+
+# 登录接口路径（会自动拼接到 base_url 后面）
+login_path: "/api/v1/login"
+
+# 全局超时时间（秒）
+timeout: 30
+
+# 默认测试账号（用于全局自动登录）
+account:
+  username: "admin"
+  password: "123456"
+
+# 测试报告输出目录
+report_dir: "./reports"

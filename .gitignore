@@ -13,6 +13,10 @@ __pycache__/
 # 测试报告（本地跑出来的，不用上传）
 reports/
 
+# 个人文件（非项目文件）
+generate_thesis.py
+*.docx
+
 # 系统文件
 .DS_Store
 Thumbs.db

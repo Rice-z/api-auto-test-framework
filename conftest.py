@@ -78,6 +78,12 @@ def login_token(req_client):
     # 将 token 写入公共请求头，后续所有请求自动携带
     req_client.update_headers({"Authorization": f"Bearer {token}"})
 
+    # 设置自动重新登录信息（Token 过期时自动刷新）
+    req_client.set_login_info(
+        login_path=login_path,
+        login_body={"username": username, "password": password},
+    )
+
     log.info(f"===== 全局登录成功，Token 已设置: {token[:20]}... =====")
 
     return token

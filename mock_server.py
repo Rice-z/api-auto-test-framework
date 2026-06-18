@@ -108,6 +108,13 @@ class MockAPIHandler(BaseHTTPRequestHandler):
                 "token_used": auth_header,  # 回显使用的 Token，方便验证
             }, status=200)
 
+        # 模拟 Token 过期场景：请求头带 "expired_token" 时返回 401
+        elif self.path == "/api/v1/token_expired_test":
+            if "expired_token" in auth_header or not auth_header:
+                self._send_json({"msg": "Token 已过期，请重新登录"}, status=401)
+                return
+            self._send_json({"msg": "Token 有效，请求成功"}, status=200)
+
         else:
             self._send_json({"msg": "接口不存在"}, status=404)
 

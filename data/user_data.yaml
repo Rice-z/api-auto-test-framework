@@ -18,3 +18,10 @@ test_cases:
     expected:
       code: 200
       check: "has_profile"  # 验证返回了用户信息
+
+  - name: "Token过期-自动刷新并重试"
+    path: "/api/v1/token_expired_test"
+    method: "GET"
+    expected:
+      code: 200
+      check: "auto_refresh"  # 验证 Token 过期后自动刷新并重试成功
